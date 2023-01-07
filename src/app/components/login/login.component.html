@@ -1,6 +1,6 @@
 <div class="vh-100 row m-0 text-center align-items-center justify-content-center">
 
-    <form [formGroup]="userForm" (ngSubmit)="onSubmit('','')">
+    <form class="col-auto" [formGroup]="userForm" (ngSubmit)="onSubmit('','')">
       <h4 for="" class="form-label">Email</h4>
       <input type="email" class="form-control  m-1" name="email" id="email" placeholder="Email" formControlName="email">
       <input type="password" class="form-control  m-1" name="password" id="password" placeholder="Password" formControlName="pass">
@@ -9,7 +9,5 @@
         <button type="submit" name="" id="" class="btn btn-success">Button</button>
       </div>
     </form>
-
-
 
 </div>

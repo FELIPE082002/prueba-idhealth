@@ -1,1 +1,51 @@
-<p>usuarios works!</p>
+<div class="vh-100 row m-0 text-center align-items-center justify-content-center">
+    <div class="col-auto card">
+        <a class="btn btn-success m-3" [routerLink]="['/home']">
+            VOLVER
+        </a>
+        <div class="card-body">
+            <div class="card-title">
+                <h5>USUARIOS</h5>
+                <form [formGroup]="usuarioForm" (submit)="onSubmit()">
+                    <div class="input-group">
+                      <input type="text" class="form-control" placeholder="Nombre" formControlName="nombre" />  
+                      <input type="email" class="form-control" placeholder="Correo" formControlName="correo" />    
+                      <input type="text" class="form-control" placeholder="Contrasena" formControlName="pass" />    
+                      <button type="submit" class="btn btn-outline-success">Guardar</button>
+                    </div>
+                </form>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-striped table-hover">
+                        <thead>
+                          <tr>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Correo</th>
+                            <th scope="col">Rol</th>
+                            <th scope="col">Opciones</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let usuario of listaUsuarios">
+                            <td>{{usuario.nombre}}</td>
+                            <td>{{usuario.correo}}</td>
+                            <td>{{usuario.rol}}</td>
+                            <td>
+                              <div class="btn-group" role="group">
+                                <button type="button" class="btn btn-danger" (click)="onDelete(usuario.uid)">
+                                  Eliminar
+                                </button>
+                                <button type="button" class="btn btn-warning">
+                                  Editar
+                                </button>
+                              </div>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

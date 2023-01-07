@@ -14,8 +14,6 @@ export class ProductosService {
 
   token: string = '';
 
-  private listaProductos: Array<Producto> = [];
-
   getProductos(): Observable<any> {
     return this.http.get(environment.endPoint + '/productos');
   }
@@ -29,4 +27,26 @@ export class ProductosService {
       headers: headers,
     });
   }
+
+
+  deleteProducto(id: string , token:string){
+    this.token = token.replace(/['"]+/g, '');
+
+    const headers = new HttpHeaders().set('x-token', this.token);
+
+    return this.http.delete(environment.endPoint + '/productos/' + id,{
+      headers:headers
+    })
+  }
+
+  editProducto(id:string,producto: any, token: string) {
+    this.token = token.replace(/['"]+/g, '');
+
+    const headers = new HttpHeaders().set('x-token', this.token);
+
+    return this.http.put(environment.endPoint + '/productos/' + id, producto ,{
+      headers:headers
+    })
+  }
+
 }

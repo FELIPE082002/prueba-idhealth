@@ -51,22 +51,18 @@ export class CategoriasComponent {
   onEdit(id: string, nombre: any){
     nombre = this.categoriaForm.value.newNombre;
 
-    console.log(nombre)
-
     const categoria = { nombre: nombre };
 
-    this.categoriaService.editCategoria(categoria,id,this.token).subscribe((err) => {
-      console.log(err)
+    this.categoriaService.editCategoria(categoria,id,this.token).subscribe((data) => {
+      console.log(data)
+      this.ngOnInit()
     })
-
-    this.activeEdit(id,nombre)
 
   }
 
   activeEdit(id: string,nombre:any) {
     this.categoriaForm.setValue({nombre:'', newNombre: nombre})
     
-
     this.listaCategorias.forEach(item =>{
    
       if(item.id == id){

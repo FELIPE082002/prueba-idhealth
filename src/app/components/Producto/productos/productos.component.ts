@@ -10,7 +10,7 @@ import { ProductosService } from 'src/app/services/productos.service';
 })
 export class ProductosComponent {
   token: string = '';
-  public listaProductos: Array<any> = [];
+  public listaCategorias: Array<any> = [];
 
   constructor(
     private productoService: ProductosService,
@@ -47,7 +47,7 @@ export class ProductosComponent {
     });
 
     this.categoriasService.disparadorCategoria.subscribe((data) => {
-      this.listaProductos = data;
+      this.listaCategorias = data;
     });
   }
 }

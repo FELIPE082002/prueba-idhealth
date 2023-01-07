@@ -9,7 +9,7 @@
           <div class="input-group">
             <input type="text" class="form-control" placeholder="Nombre producto" formControlName="nombre" >
             <select class="form-select" formControlName="idCategoria">
-                <option *ngFor="let prod of listaProductos" selected value={{prod.id}}>{{prod.nombre}}</option>
+                <option *ngFor="let prod of listaCategorias" value={{prod.id}}>{{prod.nombre}}</option>
             </select>
             <button class="btn btn-outline-success" type="submit">Guardar</button>
           </div>

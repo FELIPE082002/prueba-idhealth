@@ -3,14 +3,26 @@
     <div class="col-sm-3 m-1" *ngFor="let item of listaProductos">
         <div class="card">
           <div class="card-body">
-            <h5 class="card-title">{{item.nombre}}</h5>
-            <div class="card-text">
-              <p>{{item.categoria}}</p>
-              <p>$ {{item.precio}}</p>
+            <div *ngIf="item.edit; else elseBlock">
+              <h5 class="card-title">{{item.nombre}}</h5>
+              <div class="card-text">
+                <p>{{item.categoria}}</p>
+                <p>$ {{item.precio}}</p>
+              </div>
             </div>
+            <ng-template #elseBlock>
+              <form [formGroup]="cardProductForm" (submit)="onEdit(item.id,item.nombre,item.idCategoria)">
+                <input type="text" value={{item.nombre}} class="form-control" placeholder="Nombre categoria" formControlName="nombre"/>    
+                <button type="submit" class="btn btn-success m-3">Guardar</button>
+              </form>
+            </ng-template>
             <div class="btn-group" role="group">
-              <button type="button" class="btn btn-danger">Left</button>
-              <button type="button" class="btn btn-warning">Middle</button>
+              <button type="button" class="btn btn-danger" (click)="onDelete(item.id)">
+                Eliminar
+              </button>
+              <button type="button" class="btn btn-warning" (click)="activeEdit(item.id,item.nombre)">
+                Editar
+              </button>
             </div>
           </div>
         </div>

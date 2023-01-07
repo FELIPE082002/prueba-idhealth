@@ -7,7 +7,7 @@ import { UsuariosComponent } from './components/usuarios/usuarios.component';
 const routes: Routes = [
   {path: 'login' , component:LoginComponent},
   {path: 'home' , component:HomeComponent},
-  {path: 'usuarios' , component:UsuariosComponent},
+  {path: 'home/usuarios' , component:UsuariosComponent},
   {path: '' , redirectTo: '/login', pathMatch: 'full'},
 
 ];

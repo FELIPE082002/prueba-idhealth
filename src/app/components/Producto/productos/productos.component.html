@@ -1,0 +1,21 @@
+<div class="card">
+  <div class="card-body">
+    <h5 class="card-title m-3">
+      <div>
+        PRODUCTOS
+      </div>
+      <div class="m-3">
+        <form [formGroup]="productoForm" (submit)="onSubmit()">
+          <div class="input-group">
+            <input type="text" class="form-control" placeholder="Nombre producto" formControlName="nombre" >
+            <select class="form-select" formControlName="idCategoria">
+                <option *ngFor="let prod of listaProductos" selected value={{prod.id}}>{{prod.nombre}}</option>
+            </select>
+            <button class="btn btn-outline-success" type="submit">Guardar</button>
+          </div>
+        </form>
+      </div>
+    </h5>
+    <app-card-producto></app-card-producto>
+  </div>
+</div>

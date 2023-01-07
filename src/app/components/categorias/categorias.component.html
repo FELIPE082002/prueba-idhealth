@@ -1,0 +1,54 @@
+<div>
+  <div>
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title m-3">CATEGORIAS</h5>
+        <div class="text-center align-items-center justify-content-center m-3">
+          <form [formGroup]="categoriaForm" (ngSubmit)="onSubmit('')">
+            <div class="input-group">
+              <input type="text" class="form-control" placeholder="Nombre categoria" formControlName="nombre" />    
+              <button type="submit" class="btn btn-outline-success">Guardar</button>
+            </div>
+          </form>
+          <div class="row justify-content-center p-5">
+            <div class="table-responsive">
+              <table class="table table-primary">
+                <thead>
+                  <tr>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Opciones</th>
+                  </tr>
+                </thead>
+                <tbody *ngFor="let item of listaCategorias">
+                  <tr>
+                    <td>
+                      <div *ngIf="item.edit; else elseBlock">
+                        {{item.nombre}}
+                      </div>
+                      <ng-template #elseBlock>
+                        <form [formGroup]="categoriaForm">
+                          <input type="text" value={{item.nombre}} class="form-control m-3" placeholder="Nombre categoria" formControlName="newNombre"/>    
+                          <button type="submit" class="btn btn-success" (click)="onEdit(item.id,item.nombre)">Guardar</button>
+                        </form>
+                      </ng-template>
+                    </td>
+                    <td>
+                      <div class="btn-group" role="group">
+                        <button type="button" class="btn btn-danger" (click)="onDelete(item.id)">
+                          Eliminar
+                        </button>
+                        <button type="button" class="btn btn-warning" (click)="activeEdit(item.id,item.nombre)">
+                          Editar
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

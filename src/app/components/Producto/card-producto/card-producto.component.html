@@ -1,0 +1,19 @@
+<div class="text-center align-items-center justify-content-center bg-primary" >
+  <div class="row justify-content-center" >
+    <div class="col-sm-3 m-1" *ngFor="let item of listaProductos">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">{{item.nombre}}</h5>
+            <div class="card-text">
+              <p>{{item.categoria}}</p>
+              <p>$ {{item.precio}}</p>
+            </div>
+            <div class="btn-group" role="group">
+              <button type="button" class="btn btn-danger">Left</button>
+              <button type="button" class="btn btn-warning">Middle</button>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+</div>
